@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { User } from './user/entities/user.entity';
 require('dotenv').config();
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -12,8 +13,8 @@ require('dotenv').config();
     port: parseInt(process.env.DB_PORT),
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
-    database: 'postgres',
-    entities: [],
+    database: process.env.DB_NAME,
+    entities: [User],
     synchronize: true,
   }), UserModule, AuthModule],
   controllers: [AppController],

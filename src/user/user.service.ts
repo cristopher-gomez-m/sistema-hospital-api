@@ -2,10 +2,15 @@ import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserRepository } from './user.repository';
+import { InjectRepository } from '@nestjs/typeorm';
+import { User } from './entities/user.entity';
 
 @Injectable()
 export class UserService {
-  constructor(private userRepository: UserRepository) {}
+  constructor(
+    @InjectRepository(User)
+    private userRepository: UserRepository
+    ) {}
   create(createUserDto: CreateUserDto) {
     return this.userRepository.save(createUserDto);
   }
@@ -15,7 +20,7 @@ export class UserService {
       where: { username },
     });
   }
-  
+
   findAll() {
     return `This action returns all user`;
   }
