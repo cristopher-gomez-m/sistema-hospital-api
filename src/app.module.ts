@@ -9,6 +9,7 @@ require('dotenv').config();
 @Module({
   imports: [TypeOrmModule.forRoot({
     type: 'postgres',
+    url: 'postgres://default:uk4dEOw1WyDM@ep-muddy-leaf-290584-pooler.us-east-1.postgres.vercel-storage.com:5432/verceldb',
     host: process.env.DB_HOST,
     port: parseInt(process.env.DB_PORT),
     username: process.env.DB_USERNAME,
@@ -16,6 +17,9 @@ require('dotenv').config();
     database: process.env.DB_NAME,
     entities: [User],
     synchronize: true,
+    ssl: {
+      rejectUnauthorized: false, // Ajusta este valor según tus necesidades de seguridad
+    },
   }), UserModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],

@@ -12,11 +12,12 @@ export class AuthController {
     return 'registrado'//this.authService.register(loginBody);
   }
 */
+/*
   @Post('login')
     login(@Body() loginBody: LoginUserDto) {
       return this.authService.login(loginBody);
     }
-    
+  */  
 
     @Get()
     findAll() {

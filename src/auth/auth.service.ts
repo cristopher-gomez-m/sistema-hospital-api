@@ -2,7 +2,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { UserService } from 'src/user/user.service';
 import { compare, hash } from 'bcrypt';
 //import { CreateUserDto } from 'src/user/dto/register-user.dto';
-import { LoginUserDto } from 'src/user/dto/login-user.dto';
+//import { LoginUserDto } from 'src/user/dto/login-user.dto';
 import { JwtService } from '@nestjs/jwt';
 import { User } from 'src/user/entities/user.entity';
 
@@ -19,7 +19,7 @@ export class AuthService {
     registerBody = { ...registerBody, password: plainToHash };
     return this.userService.create(registerBody);
   }
-  */
+
   async login(loginBody: LoginUserDto) {
     const { username, password } = loginBody;
     //al haber el mismo nickname, buscamos todos
@@ -46,7 +46,7 @@ export class AuthService {
     }
     return data;
   }
-
+  */
   findAll() {
     return this.userService.findAll();
   }
