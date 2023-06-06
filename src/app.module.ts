@@ -16,9 +16,7 @@ require('dotenv').config();
     database: process.env.DB_NAME,
     entities: [User],
     synchronize: true,
-    ssl: {
-      rejectUnauthorized: false,
-    },
+    ssl: process.env.NODE_ENV !== 'development',
   }), UserModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
