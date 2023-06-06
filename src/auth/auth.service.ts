@@ -21,9 +21,9 @@ export class AuthService {
   }
 
   async login(loginBody: LoginUserDto) {
-    const { username, password } = loginBody;
+    const { email, password } = loginBody;
     //al haber el mismo nickname, buscamos todos
-    const usersExist = await this.userService.findByUsername(username);
+    const usersExist = await this.userService.findByUsername(email);
     if (usersExist.length === 0)
       throw new HttpException('NOT_FOUND', HttpStatus.NOT_FOUND);
     let findUser:User;
