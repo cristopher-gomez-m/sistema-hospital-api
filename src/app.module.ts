@@ -18,7 +18,7 @@ require('dotenv').config();
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    entities: [User,Rol,Consultorio],
+    entities: ["dist/**/*.entity.js"],
     synchronize: true,
     ssl: process.env.NODE_ENV !== 'development',
   }), UserModule, AuthModule,RolModule, ConsultoriosModule],
