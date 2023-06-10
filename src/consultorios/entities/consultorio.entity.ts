@@ -1,15 +1,15 @@
 import { User } from "../../user/entities/user.entity";
-import { Column, Entity, JoinColumn, OneToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Consultorio {
-@PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ length: 45})
   especialidad: string;
 
-  @OneToOne(() => User)
-  @JoinColumn({ name: 'id_medico' })
+  @OneToOne(() => User,{ cascade: false })
+  @JoinColumn({ name: 'id_medico'})
   medico: User;
 }

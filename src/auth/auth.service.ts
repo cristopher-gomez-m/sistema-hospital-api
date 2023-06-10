@@ -27,9 +27,9 @@ export class AuthService {
     const { email, password } = loginBody;
     //al haber el mismo nickname, buscamos todos
     const usersExist = await this.userService.findOneByUsername(email);
-    if (!usersExist)
+    
+  if (!usersExist)
       throw new HttpException('NOT_FOUND', HttpStatus.NOT_FOUND);
-  
 
       const checkPassword = await compare(password, usersExist.password);
 

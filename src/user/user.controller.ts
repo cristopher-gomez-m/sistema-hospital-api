@@ -16,7 +16,20 @@ export class UserController {
     return this.userService.findAll();
   }
 
-
+  @Get('allMedicos')
+  findAllMedicos() {
+    return this.userService.findAllMedicos();
+  }
+/*
+  @Get('medicos/nombres')
+  findAllNamesMedicos() {
+    return this.userService.findAllNamesMedicos();
+  }
+*/
+  @Get('prueba')
+  findOneById() {
+    return this.userService.findById(8);
+  }
 
 
   @Delete(':id')

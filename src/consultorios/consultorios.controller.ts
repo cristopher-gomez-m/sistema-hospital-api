@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Put } from '@nestjs/common';
 import { ConsultoriosService } from './consultorios.service';
 import { CreateConsultorioDto } from './dto/create-consultorio.dto';
 import { UpdateConsultorioDto } from './dto/update-consultorio.dto';
@@ -11,6 +11,10 @@ export class ConsultoriosController {
   create(@Body() createConsultorioDto: CreateConsultorioDto) {
     return this.consultoriosService.create(createConsultorioDto);
   }
+  @Get('medicos/nombres')
+  findAllNamesMedicos() {
+    return this.consultoriosService.findUsuariosSinConsultorio();
+  }
 
   @Get()
   findAll() {
@@ -22,7 +26,7 @@ export class ConsultoriosController {
     return this.consultoriosService.findOne(+id);
   }
 
-  @Patch(':id')
+  @Put(':id')
   update(@Param('id') id: string, @Body() updateConsultorioDto: UpdateConsultorioDto) {
     return this.consultoriosService.update(+id, updateConsultorioDto);
   }
