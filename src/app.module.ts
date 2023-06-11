@@ -9,6 +9,7 @@ import { RolModule } from './rol/rol.module';
 import { Rol } from './rol/rol.entity';
 import { ConsultoriosModule } from './consultorios/consultorios.module';
 import { Consultorio } from './consultorios/entities/consultorio.entity';
+import { MedicosModule } from './medicos/medicos.module';
 require('dotenv').config();
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -21,7 +22,7 @@ require('dotenv').config();
     entities: ["dist/**/*.entity.js"],
     synchronize: true,
     ssl: process.env.NODE_ENV !== 'development',
-  }), UserModule, AuthModule,RolModule, ConsultoriosModule],
+  }), UserModule, AuthModule,RolModule, ConsultoriosModule, MedicosModule],
   controllers: [AppController],
   providers: [AppService],
 })

@@ -9,7 +9,7 @@ import { CreateConsultorioDto } from './dto/create-consultorio.dto';
 import { UpdateConsultorioDto } from './dto/update-consultorio.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Consultorio } from './entities/consultorio.entity';
-import { In, Not, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { UserService } from '../user/user.service';
 import { User } from 'src/user/entities/user.entity';
 @Injectable()
