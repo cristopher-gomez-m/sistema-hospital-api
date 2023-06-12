@@ -6,16 +6,19 @@ import { User } from 'src/user/entities/user.entity';
 import { JwtModule } from '@nestjs/jwt';
 import { UserRepository } from 'src/user/user.repository';
 import { UserService } from 'src/user/user.service';
+import { HistorialClinico } from 'src/historial-clinico/entities/historial-clinico.entity';
+import { HistorialClinicoRepository } from 'src/historial-clinico/historial-clinico.repository';
+import { HistorialClinicoService } from 'src/historial-clinico/historial-clinico.service';
 require('dotenv').config();
 @Module({
   imports: [
-    TypeOrmModule.forFeature([User]),
+    TypeOrmModule.forFeature([User,HistorialClinico]),
     JwtModule.register({
       secret: process.env.JWT_SECRET,
       signOptions: { expiresIn: '1h' },
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService,UserService, UserRepository]
+  providers: [AuthService,UserService, UserRepository,HistorialClinicoService,HistorialClinicoRepository]
 })
 export class AuthModule {}

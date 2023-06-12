@@ -44,8 +44,5 @@ export class AuthService {
     }
     return data;
   }
-  
-  findAll() {
-    return this.userService.findAll();
-  }
+
 }

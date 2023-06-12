@@ -11,9 +11,9 @@ export class UserController {
     return this.userService.create(createUserDto);
   }
 
-  @Get()
-  findAll() {
-    return this.userService.findAll();
+  @Get('pacientes')
+  findAllPacientes() {
+    return this.userService.findAllPacientes();
   }
 
   @Get('allMedicos')
@@ -28,9 +28,13 @@ export class UserController {
 */
   @Get('prueba')
   findOneById() {
-    return this.userService.findById(8);
+    return this.userService.findById(16);
   }
 
+  @Get('historial/:user_id')
+  findHistorial(@Param('user_id')user_id: string){
+    return this.userService.findById(+user_id);
+  }
 
   @Delete(':id')
   remove(@Param('id') id: string) {

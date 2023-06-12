@@ -4,10 +4,13 @@ import { UserController } from './user.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { UserRepository } from './user.repository';
+import { HistorialClinicoRepository } from 'src/historial-clinico/historial-clinico.repository';
+import { HistorialClinicoService } from 'src/historial-clinico/historial-clinico.service';
+import { HistorialClinico } from 'src/historial-clinico/entities/historial-clinico.entity';
 
 @Module({
-  imports:[TypeOrmModule.forFeature([User])],
+  imports:[TypeOrmModule.forFeature([HistorialClinico,User])],
   controllers: [UserController],
-  providers: [UserService,UserRepository]
+  providers: [UserService,UserRepository,HistorialClinicoService,HistorialClinicoRepository],
 })
 export class UserModule {}

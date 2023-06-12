@@ -1,18 +1,32 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateUserDto } from './dto/register-user.dto';
 import { UserRepository } from './user.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
-import { Equal, In, Not } from 'typeorm';
+import { Equal, In, Not, Repository } from 'typeorm';
+import { HistorialClinico } from '../historial-clinico/entities/historial-clinico.entity';
+import { HistorialClinicoService } from 'src/historial-clinico/historial-clinico.service';
+import { classToPlain } from 'class-transformer';
+
 
 @Injectable()
 export class UserService {
   constructor(
     @InjectRepository(User)
     private userRepository: UserRepository,
+    private historialService: HistorialClinicoService,
+    //private historialRepository: HistorialClinicoRepository
   ) {}
-  create(createUserDto: CreateUserDto) {
-    return this.userRepository.save(createUserDto);
+  async create(createUserDto: CreateUserDto) {
+    
+    const usuario = this.userRepository.create(createUserDto);
+  
+    const historialClinico = new HistorialClinico();
+    await this.historialService.save(historialClinico);
+    usuario.historial_clinico = historialClinico;
+    await this.userRepository.save(usuario);
+    return usuario;
+    
   }
 
   findByUsername(email: string) {
@@ -24,13 +38,15 @@ export class UserService {
 
   findById(id: number): Promise<User> {
     return this.userRepository.findOne({
-      relations: ['rol'],
+      relations: ['rol','historial_clinico'],
       where: { id },
     });
   }
 
-  findAll() {
-    return `This action returns all user`;
+  findAllPacientes() {
+    return this.userRepository.find({
+      where: { rol:Equal(1) },
+    });
   }
 
   findAllMedicos() {
@@ -54,7 +70,15 @@ export class UserService {
       where: { email } });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  async remove(id: number) {
+    const user = await this.userRepository.findOne({ 
+      relations: ['historial_clinico'],
+      where: { id }
+    });
+    if (!user) {
+      throw new NotFoundException('Usuario no encontrado');
+    }
+    await this.userRepository.remove(user);
+    await this.historialService.remove(user.historial_clinico.id);
   }
 }

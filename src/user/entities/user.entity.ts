@@ -1,9 +1,11 @@
+import { HistorialClinico } from '../../historial-clinico/entities/historial-clinico.entity';
 import { Rol } from '../../rol/rol.entity';
 import {
   Column,
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -30,4 +32,7 @@ export class User {
 
   @Column({ length: 70 })
   direccion: string;
+  @OneToOne(() => HistorialClinico, { cascade: true })
+  @JoinColumn()
+  historial_clinico:HistorialClinico;
 }

@@ -18,9 +18,4 @@ export class AuthController {
       return this.authService.login(loginBody);
     }
     
-
-    @Get()
-    findAll() {
-      return this.authService.findAll();
-    }
 }
