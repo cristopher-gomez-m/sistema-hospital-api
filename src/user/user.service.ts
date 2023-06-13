@@ -7,6 +7,7 @@ import { Equal, In, Not, Repository } from 'typeorm';
 import { HistorialClinico } from '../historial-clinico/entities/historial-clinico.entity';
 import { HistorialClinicoService } from 'src/historial-clinico/historial-clinico.service';
 import { classToPlain } from 'class-transformer';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 
 @Injectable()
@@ -80,5 +81,24 @@ export class UserService {
     }
     await this.userRepository.remove(user);
     await this.historialService.remove(user.historial_clinico.id);
+  }
+
+
+  async updateNombreYApellido(user_id: number,updateUserDto:UpdateUserDto): Promise<User> {
+    // Obtener el usuario de la base de datos
+    const user = await this.userRepository.findOne(
+      { 
+        where: { id:user_id }
+      }
+    );
+
+    // Realizar la actualización del nombre y apellido
+    user.nombre = updateUserDto.nombre;
+    user.apellido = updateUserDto.apellido;
+
+    // Guardar los cambios en la base de datos
+    const updatedUser = await this.userRepository.save(user);
+
+    return updatedUser;
   }
 }

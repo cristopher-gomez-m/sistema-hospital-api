@@ -1,6 +1,7 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Put } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/register-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 @Controller('user')
 export class UserController {
@@ -34,6 +35,11 @@ export class UserController {
   @Get('historial/:user_id')
   findHistorial(@Param('user_id')user_id: string){
     return this.userService.findById(+user_id);
+  }
+
+  @Put(':user_id')
+  updateNombreYApellido(@Param('user_id')user_id: string, @Body() updateUserDto:UpdateUserDto){
+    return this.userService.updateNombreYApellido(+user_id,updateUserDto);
   }
 
   @Delete(':id')
