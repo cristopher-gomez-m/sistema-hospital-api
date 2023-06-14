@@ -30,6 +30,8 @@ export class User {
   @Column({ length: 50 })
   apellido: string;
 
+  @Column({ length: 10})
+  cedula: string;
   @Column({ length: 70 })
   direccion: string;
   @OneToOne(() => HistorialClinico, { cascade: true })

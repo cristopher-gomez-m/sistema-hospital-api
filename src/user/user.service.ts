@@ -8,6 +8,7 @@ import { HistorialClinico } from '../historial-clinico/entities/historial-clinic
 import { HistorialClinicoService } from 'src/historial-clinico/historial-clinico.service';
 import { classToPlain } from 'class-transformer';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { UpdateMedicoDto } from '../medicos/dto/update-medico.dto';
 
 
 @Injectable()
@@ -40,6 +41,12 @@ export class UserService {
   findById(id: number): Promise<User> {
     return this.userRepository.findOne({
       relations: ['rol','historial_clinico'],
+      where: { id },
+    });
+  }
+
+  findMedicoById(id: number): Promise<User> {
+    return this.userRepository.findOne({
       where: { id },
     });
   }
@@ -83,6 +90,8 @@ export class UserService {
     await this.historialService.remove(user.historial_clinico.id);
   }
 
+ 
+
 
   async updateNombreYApellido(user_id: number,updateUserDto:UpdateUserDto): Promise<User> {
     // Obtener el usuario de la base de datos
@@ -100,5 +109,9 @@ export class UserService {
     const updatedUser = await this.userRepository.save(user);
 
     return updatedUser;
+  }
+
+  async updateMedico( id: number,updateMedicoDto: UpdateMedicoDto){
+    return await this.userRepository.update(id,updateMedicoDto);
   }
 }

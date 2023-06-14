@@ -13,6 +13,9 @@ export class CreateUserDto {
 
     @IsNotEmpty()
     nombre: string;
+
+    @IsNotEmpty()
+    cedula: string;
   
     @IsNotEmpty()
     apellido: string;

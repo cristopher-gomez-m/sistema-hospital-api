@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Put } from '@nestjs/common';
 import { MedicosService } from './medicos.service';
 import { CreateMedicoDto } from './dto/create-medico.dto';
 import { UpdateMedicoDto } from './dto/update-medico.dto';
@@ -22,9 +22,9 @@ export class MedicosController {
     return this.medicosService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateMedicoDto: UpdateMedicoDto) {
-    return this.medicosService.update(+id, updateMedicoDto);
+  @Put(':id')
+  update(@Param('id') id: string, @Body() updateConsultorioDto: UpdateMedicoDto) {
+    return this.medicosService.update(+id, updateConsultorioDto);
   }
 
   @Delete(':id')
