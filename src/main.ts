@@ -7,7 +7,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe());
   const corsOptions: CorsOptions = {
-    origin: ['http://localhost:4200', 'https://tu-app-de-produccion.com'], // Reemplaza con la URL de tu aplicación Angular
+    origin: ['http://localhost:4200', 'https://sistema-hospital.vercel.app'], // Reemplaza con la URL de tu aplicación Angular
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     preflightContinue: false,
