@@ -1,3 +1,4 @@
+import { Cita } from '../../cita/entities/cita.entity';
 import { HistorialClinico } from '../../historial-clinico/entities/historial-clinico.entity';
 import { Rol } from '../../rol/rol.entity';
 import {
@@ -5,6 +6,7 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -37,4 +39,7 @@ export class User {
   @OneToOne(() => HistorialClinico, { cascade: true })
   @JoinColumn()
   historial_clinico:HistorialClinico;
+
+  @OneToMany(() => Cita, cita => cita.user)
+  citas:Cita[]
 }

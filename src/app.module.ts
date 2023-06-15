@@ -9,6 +9,7 @@ import { ConsultoriosModule } from './consultorios/consultorios.module';
 import { MedicosModule } from './medicos/medicos.module';
 import { HistorialClinicoModule } from './historial-clinico/historial-clinico.module';
 import { HistorialClinico } from './historial-clinico/entities/historial-clinico.entity';
+import { CitaModule } from './cita/cita.module';
 require('dotenv').config();
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -21,7 +22,7 @@ require('dotenv').config();
     entities: ["dist/**/*.entity.js",HistorialClinico],
     synchronize: true,
     ssl: process.env.NODE_ENV !== 'development',
-  }), UserModule, AuthModule,RolModule, ConsultoriosModule, MedicosModule, HistorialClinicoModule],
+  }), UserModule, AuthModule,RolModule, ConsultoriosModule, MedicosModule, HistorialClinicoModule, CitaModule],
   controllers: [AppController],
   providers: [AppService],
 })
