@@ -8,8 +8,8 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
   
   const corsOptions: CorsOptions = {
-    origin: ['https://sistema-hospital.vercel.app','sistema-hospital.vercel.app'], // Reemplaza con la URL de tu aplicación Angular
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    origin: true, // Reemplaza con la URL de tu aplicación Angular
+    methods: ['GET', 'POST', 'PUT', 'DELETE','OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     preflightContinue: false,
     optionsSuccessStatus: 200,
