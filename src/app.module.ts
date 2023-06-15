@@ -10,6 +10,10 @@ import { MedicosModule } from './medicos/medicos.module';
 import { HistorialClinicoModule } from './historial-clinico/historial-clinico.module';
 import { HistorialClinico } from './historial-clinico/entities/historial-clinico.entity';
 import { CitaModule } from './cita/cita.module';
+import { User } from './user/entities/user.entity';
+import { Rol } from './rol/rol.entity';
+import { Consultorio } from './consultorios/entities/consultorio.entity';
+import { Cita } from './cita/entities/cita.entity';
 require('dotenv').config();
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -19,8 +23,9 @@ require('dotenv').config();
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    entities: ["dist/**/*.entity.js",HistorialClinico],
+    entities: [User,Rol,Consultorio,HistorialClinico,Cita],
     synchronize: true,
+    //ssl: true,
     ssl: process.env.NODE_ENV !== 'development',
   }), UserModule, AuthModule,RolModule, ConsultoriosModule, MedicosModule, HistorialClinicoModule, CitaModule],
   controllers: [AppController],
