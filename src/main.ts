@@ -8,7 +8,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
   
   const corsOptions: CorsOptions = {
-    origin: true, // Reemplaza con la URL de tu aplicación Angular
+    origin: '*', // Reemplaza con la URL de tu aplicación Angular
     methods: ['GET', 'POST', 'PUT', 'DELETE','OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     preflightContinue: false,
