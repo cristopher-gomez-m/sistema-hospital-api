@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { Cita } from '../../cita/entities/cita.entity';
 import { HistorialClinico } from '../../historial-clinico/entities/historial-clinico.entity';
 import { Rol } from '../../rol/rol.entity';
@@ -16,6 +17,7 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
   
+  @ApiProperty({ description: 'Nombre del usuario', example: 'jon@hotmail.com' })
   @Column({ unique: true })
   email: string;
 

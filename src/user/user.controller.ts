@@ -3,6 +3,7 @@ import { UserService } from './user.service';
 import { CreateUserDto } from './dto/register-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ApiTags, ApiResponse, ApiOperation, ApiParam, ApiBody } from '@nestjs/swagger';
+import { User } from './entities/user.entity';
 @ApiTags('user')
 @Controller('user')
 export class UserController {
@@ -16,6 +17,8 @@ export class UserController {
     return this.userService.create(createUserDto);
   }
 
+  @ApiOperation({ summary: 'Obtener todos los pacientes' })
+  @ApiResponse({ status: 200, description: 'Lista de todos los pacientes',type:User})
   @Get('pacientes')
   findAllPacientes() {
     return this.userService.findAllPacientes();

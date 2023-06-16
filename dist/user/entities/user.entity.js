@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
+const swagger_1 = require("@nestjs/swagger");
 const cita_entity_1 = require("../../cita/entities/cita.entity");
 const historial_clinico_entity_1 = require("../../historial-clinico/entities/historial-clinico.entity");
 const rol_entity_1 = require("../../rol/rol.entity");
@@ -21,6 +22,7 @@ __decorate([
     __metadata("design:type", Number)
 ], User.prototype, "id", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ description: 'Nombre del usuario', example: 'jon@hotmail.com' }),
     (0, typeorm_1.Column)({ unique: true }),
     __metadata("design:type", String)
 ], User.prototype, "email", void 0);
