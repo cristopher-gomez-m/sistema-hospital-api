@@ -37,7 +37,6 @@ exports.AppModule = AppModule = __decorate([
                 database: process.env.DB_NAME,
                 entities: [user_entity_1.User, rol_entity_1.Rol, consultorio_entity_1.Consultorio, historial_clinico_entity_1.HistorialClinico, cita_entity_1.Cita],
                 synchronize: true,
-                ssl: process.env.NODE_ENV !== 'development',
             }), user_module_1.UserModule, auth_module_1.AuthModule, rol_module_1.RolModule, consultorios_module_1.ConsultoriosModule, medicos_module_1.MedicosModule, historial_clinico_module_1.HistorialClinicoModule, cita_module_1.CitaModule],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

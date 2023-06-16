@@ -7,8 +7,8 @@ async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.useGlobalPipes(new common_1.ValidationPipe());
     const corsOptions = {
-        origin: ['http://localhost:4200', 'https://sistema-hospital.vercel.app'],
-        methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        origin: '*',
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
         allowedHeaders: ['Content-Type', 'Authorization'],
         preflightContinue: false,
         optionsSuccessStatus: 200,

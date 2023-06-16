@@ -26,7 +26,7 @@ require('dotenv').config();
     entities: [User,Rol,Consultorio,HistorialClinico,Cita],
     synchronize: true,
     //ssl: true,
-    ssl: process.env.NODE_ENV !== 'development',
+    //ssl: process.env.NODE_ENV !== 'development',
   }), UserModule, AuthModule,RolModule, ConsultoriosModule, MedicosModule, HistorialClinicoModule, CitaModule],
   controllers: [AppController],
   providers: [AppService],
