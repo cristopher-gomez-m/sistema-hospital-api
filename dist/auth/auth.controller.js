@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const auth_service_1 = require("./auth.service");
 const login_user_dto_1 = require("../user/dto/login-user.dto");
 const register_user_dto_1 = require("../user/dto/register-user.dto");
+const swagger_1 = require("@nestjs/swagger");
 let AuthController = exports.AuthController = class AuthController {
     constructor(authService) {
         this.authService = authService;
@@ -30,6 +31,9 @@ let AuthController = exports.AuthController = class AuthController {
 };
 __decorate([
     (0, common_1.Post)('register'),
+    (0, swagger_1.ApiOperation)({ summary: 'Registra un usuario' }),
+    (0, swagger_1.ApiBody)({ type: register_user_dto_1.CreateUserDto }),
+    (0, swagger_1.ApiResponse)({ status: 201, description: 'El usuario ha sido registrado exitosamente' }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [register_user_dto_1.CreateUserDto]),
@@ -37,6 +41,10 @@ __decorate([
 ], AuthController.prototype, "register", null);
 __decorate([
     (0, common_1.Post)('login'),
+    (0, swagger_1.ApiOperation)({ summary: 'Inicio de sesión' }),
+    (0, swagger_1.ApiBody)({ type: login_user_dto_1.LoginUserDto }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: 'Inicio de sesión exitoso', type: String }),
+    (0, swagger_1.ApiResponse)({ status: 401, description: 'Credenciales inválidas' }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [login_user_dto_1.LoginUserDto]),

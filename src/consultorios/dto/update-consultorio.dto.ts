@@ -1,10 +1,14 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { CreateConsultorioDto } from './create-consultorio.dto';
 import { IsNotEmpty } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class UpdateConsultorioDto  {
-    @IsNotEmpty({message:"La especialidad no debe estar vacia"})
+    @ApiProperty({ example: 'Especialidad del consultorio', description: 'Especialidad del consultorio', required: true })
+    @IsNotEmpty({ message: 'La especialidad no debe estar vacía' })
     especialidad: string;
-    @IsNotEmpty({message:"El medico no debe estar vacio"})
+  
+    @ApiProperty({ example: 1, description: 'ID del médico', required: true })
+    @IsNotEmpty({ message: 'El médico no debe estar vacío' })
     medico_id: number;
-}
+  }

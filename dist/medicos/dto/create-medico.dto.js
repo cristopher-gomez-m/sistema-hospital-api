@@ -12,35 +12,43 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateMedicoDto = void 0;
 const class_validator_1 = require("class-validator");
 const rol_entity_1 = require("../../rol/rol.entity");
+const swagger_1 = require("@nestjs/swagger");
 class CreateMedicoDto {
 }
 exports.CreateMedicoDto = CreateMedicoDto;
 __decorate([
+    (0, swagger_1.ApiProperty)({ description: 'Email del medico', example: 'example@gmail.com' }),
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsEmail)(),
     __metadata("design:type", String)
 ], CreateMedicoDto.prototype, "email", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ description: 'Contraseña', example: 'password123' }),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateMedicoDto.prototype, "password", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ description: 'Rol del medico', example: 'admin' }),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", rol_entity_1.Rol)
 ], CreateMedicoDto.prototype, "rol", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ description: 'Nombre del medico', example: 'John' }),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateMedicoDto.prototype, "nombre", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ description: 'Cedula del medico', example: '1234567890' }),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateMedicoDto.prototype, "cedula", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ description: 'Apellido del medico', example: 'Doe' }),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateMedicoDto.prototype, "apellido", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ description: 'Dirección del medico', example: '123 Street' }),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateMedicoDto.prototype, "direccion", void 0);

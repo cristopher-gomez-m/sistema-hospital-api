@@ -22,41 +22,49 @@ __decorate([
     __metadata("design:type", Number)
 ], User.prototype, "id", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ description: 'Nombre del usuario', example: 'jon@hotmail.com' }),
+    (0, swagger_1.ApiProperty)({ description: 'Email del usuario', example: 'jon@hotmail.com' }),
     (0, typeorm_1.Column)({ unique: true }),
     __metadata("design:type", String)
 ], User.prototype, "email", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ description: 'Constraseña del usuario', example: '12345' }),
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], User.prototype, "password", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ description: 'Rol del usuario', example: '1' }),
     (0, typeorm_1.ManyToOne)(() => rol_entity_1.Rol),
     (0, typeorm_1.JoinColumn)({ name: 'rol_id' }),
     __metadata("design:type", rol_entity_1.Rol)
 ], User.prototype, "rol", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ description: 'Nombre del usuario', example: 'Carlos' }),
     (0, typeorm_1.Column)({ length: 50 }),
     __metadata("design:type", String)
 ], User.prototype, "nombre", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ description: 'Apellido del usuario', example: 'Soler' }),
     (0, typeorm_1.Column)({ length: 50 }),
     __metadata("design:type", String)
 ], User.prototype, "apellido", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ description: 'Cédula del usuario', example: '0932304282' }),
     (0, typeorm_1.Column)({ length: 10 }),
     __metadata("design:type", String)
 ], User.prototype, "cedula", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ description: 'Dirección del usuario', example: 'La Alborada' }),
     (0, typeorm_1.Column)({ length: 70 }),
     __metadata("design:type", String)
 ], User.prototype, "direccion", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ description: 'Historial clínico del usuario' }),
     (0, typeorm_1.OneToOne)(() => historial_clinico_entity_1.HistorialClinico, { cascade: true }),
     (0, typeorm_1.JoinColumn)(),
     __metadata("design:type", historial_clinico_entity_1.HistorialClinico)
 ], User.prototype, "historial_clinico", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ description: 'Lista de citas del usuario' }),
     (0, typeorm_1.OneToMany)(() => cita_entity_1.Cita, cita => cita.user),
     __metadata("design:type", Array)
 ], User.prototype, "citas", void 0);
