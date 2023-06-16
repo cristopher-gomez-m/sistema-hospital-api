@@ -17,6 +17,8 @@ const common_1 = require("@nestjs/common");
 const user_service_1 = require("./user.service");
 const register_user_dto_1 = require("./dto/register-user.dto");
 const update_user_dto_1 = require("./dto/update-user.dto");
+const swagger_1 = require("@nestjs/swagger");
+const user_entity_1 = require("./entities/user.entity");
 let UserController = exports.UserController = class UserController {
     constructor(userService) {
         this.userService = userService;
@@ -44,6 +46,9 @@ let UserController = exports.UserController = class UserController {
     }
 };
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: 'Crear usuario' }),
+    (0, swagger_1.ApiBody)({ type: register_user_dto_1.CreateUserDto }),
+    (0, swagger_1.ApiResponse)({ status: 201, description: 'Usuario creado exitosamente' }),
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -51,6 +56,8 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UserController.prototype, "create", null);
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: 'Obtener todos los pacientes' }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: 'Lista de todos los pacientes', type: user_entity_1.User }),
     (0, common_1.Get)('pacientes'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
@@ -91,6 +98,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UserController.prototype, "remove", null);
 exports.UserController = UserController = __decorate([
+    (0, swagger_1.ApiTags)('user'),
     (0, common_1.Controller)('user'),
     __metadata("design:paramtypes", [user_service_1.UserService])
 ], UserController);

@@ -2,16 +2,23 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, Put } from '@nestjs/
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/register-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-
+import { ApiTags, ApiResponse, ApiOperation, ApiParam, ApiBody } from '@nestjs/swagger';
+import { User } from './entities/user.entity';
+@ApiTags('user')
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
+  @ApiOperation({ summary: 'Crear usuario' })
+  @ApiBody({ type: CreateUserDto })
+  @ApiResponse({ status: 201, description: 'Usuario creado exitosamente' })
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto);
   }
 
+  @ApiOperation({ summary: 'Obtener todos los pacientes' })
+  @ApiResponse({ status: 200, description: 'Lista de todos los pacientes', type:User })
   @Get('pacientes')
   findAllPacientes() {
     return this.userService.findAllPacientes();
