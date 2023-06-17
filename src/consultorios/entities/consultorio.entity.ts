@@ -1,4 +1,4 @@
-import { Cita } from "src/cita/entities/cita.entity";
+import { Cita } from "../../cita/entities/cita.entity";
 import { User } from "../../user/entities/user.entity";
 import { Column, Entity, JoinColumn, ManyToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { ApiProperty } from "@nestjs/swagger";
