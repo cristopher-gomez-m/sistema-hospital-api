@@ -13,23 +13,28 @@ exports.Consultorio = void 0;
 const cita_entity_1 = require("../../cita/entities/cita.entity");
 const user_entity_1 = require("../../user/entities/user.entity");
 const typeorm_1 = require("typeorm");
+const swagger_1 = require("@nestjs/swagger");
 let Consultorio = exports.Consultorio = class Consultorio {
 };
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)(),
+    (0, swagger_1.ApiProperty)({ example: 1, description: 'ID del consultorio' }),
     __metadata("design:type", Number)
 ], Consultorio.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.Column)({ length: 45 }),
+    (0, swagger_1.ApiProperty)({ example: 'Especialidad del consultorio', description: 'Especialidad del consultorio' }),
     __metadata("design:type", String)
 ], Consultorio.prototype, "especialidad", void 0);
 __decorate([
     (0, typeorm_1.OneToOne)(() => user_entity_1.User, { cascade: false }),
     (0, typeorm_1.JoinColumn)({ name: 'id_medico' }),
+    (0, swagger_1.ApiProperty)({ type: () => user_entity_1.User, description: 'Médico asignado al consultorio' }),
     __metadata("design:type", user_entity_1.User)
 ], Consultorio.prototype, "medico", void 0);
 __decorate([
     (0, typeorm_1.ManyToMany)(() => cita_entity_1.Cita, cita => cita.consultorios),
+    (0, swagger_1.ApiProperty)({ type: () => cita_entity_1.Cita, isArray: true, description: 'Lista de citas relacionadas al consultorio' }),
     __metadata("design:type", Array)
 ], Consultorio.prototype, "citas", void 0);
 exports.Consultorio = Consultorio = __decorate([

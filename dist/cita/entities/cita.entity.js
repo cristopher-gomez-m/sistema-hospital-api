@@ -13,26 +13,32 @@ exports.Cita = void 0;
 const user_entity_1 = require("../../user/entities/user.entity");
 const consultorio_entity_1 = require("../../consultorios/entities/consultorio.entity");
 const typeorm_1 = require("typeorm");
+const swagger_1 = require("@nestjs/swagger");
 let Cita = exports.Cita = class Cita {
 };
 __decorate([
+    (0, swagger_1.ApiProperty)({ description: 'ID de la cita', example: 1 }),
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
 ], Cita.prototype, "id", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ type: () => [consultorio_entity_1.Consultorio], description: 'Lista de consultorios asociados a la cita' }),
     (0, typeorm_1.ManyToMany)(() => consultorio_entity_1.Consultorio),
     (0, typeorm_1.JoinTable)(),
     __metadata("design:type", Array)
 ], Cita.prototype, "consultorios", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ description: 'Fecha de la cita', example: '2023-06-15' }),
     (0, typeorm_1.Column)({ type: 'varchar' }),
     __metadata("design:type", String)
 ], Cita.prototype, "fecha", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ description: 'Hora de la cita', example: '09:00 AM' }),
     (0, typeorm_1.Column)({ type: 'varchar' }),
     __metadata("design:type", String)
 ], Cita.prototype, "hora", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ type: () => user_entity_1.User, description: 'Usuario asociado a la cita' }),
     (0, typeorm_1.ManyToOne)(() => user_entity_1.User, user => user.citas),
     (0, typeorm_1.JoinColumn)({ name: 'user_id' }),
     __metadata("design:type", user_entity_1.User)

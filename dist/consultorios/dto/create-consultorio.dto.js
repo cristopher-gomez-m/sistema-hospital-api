@@ -11,14 +11,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateConsultorioDto = void 0;
 const class_validator_1 = require("class-validator");
+const swagger_1 = require("@nestjs/swagger");
 class CreateConsultorioDto {
 }
 exports.CreateConsultorioDto = CreateConsultorioDto;
 __decorate([
+    (0, swagger_1.ApiProperty)({ example: 'Especialidad del consultorio', description: 'Especialidad del consultorio', required: true }),
     (0, class_validator_1.IsNotEmpty)({ message: "La especialidad no debe estar vacia" }),
     __metadata("design:type", String)
 ], CreateConsultorioDto.prototype, "especialidad", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ example: 1, description: 'ID del médico', required: true }),
     (0, class_validator_1.IsNotEmpty)({ message: "El medico no debe estar vacio" }),
     __metadata("design:type", Number)
 ], CreateConsultorioDto.prototype, "medico_id", void 0);

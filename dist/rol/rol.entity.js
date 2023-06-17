@@ -10,14 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Rol = void 0;
+const swagger_1 = require("@nestjs/swagger");
 const typeorm_1 = require("typeorm");
 let Rol = exports.Rol = class Rol {
 };
 __decorate([
+    (0, swagger_1.ApiProperty)({ example: 1, description: 'ID del rol' }),
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
 ], Rol.prototype, "id", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ example: 'administrador', description: 'Nombre del rol' }),
     (0, typeorm_1.Column)({ length: 45 }),
     __metadata("design:type", String)
 ], Rol.prototype, "nombre", void 0);

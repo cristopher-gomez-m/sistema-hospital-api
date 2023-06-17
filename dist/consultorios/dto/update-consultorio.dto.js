@@ -11,15 +11,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UpdateConsultorioDto = void 0;
 const class_validator_1 = require("class-validator");
+const swagger_1 = require("@nestjs/swagger");
 class UpdateConsultorioDto {
 }
 exports.UpdateConsultorioDto = UpdateConsultorioDto;
 __decorate([
-    (0, class_validator_1.IsNotEmpty)({ message: "La especialidad no debe estar vacia" }),
+    (0, swagger_1.ApiProperty)({ example: 'Especialidad del consultorio', description: 'Especialidad del consultorio', required: true }),
+    (0, class_validator_1.IsNotEmpty)({ message: 'La especialidad no debe estar vacía' }),
     __metadata("design:type", String)
 ], UpdateConsultorioDto.prototype, "especialidad", void 0);
 __decorate([
-    (0, class_validator_1.IsNotEmpty)({ message: "El medico no debe estar vacio" }),
+    (0, swagger_1.ApiProperty)({ example: 1, description: 'ID del médico', required: true }),
+    (0, class_validator_1.IsNotEmpty)({ message: 'El médico no debe estar vacío' }),
     __metadata("design:type", Number)
 ], UpdateConsultorioDto.prototype, "medico_id", void 0);
 //# sourceMappingURL=update-consultorio.dto.js.map
