@@ -15,8 +15,8 @@ import {
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
-  id: number;
   
+  id: number;
   @ApiProperty({ description: 'Nombre del usuario', example: 'jon@hotmail.com' })
   @Column({ unique: true })
   email: string;
