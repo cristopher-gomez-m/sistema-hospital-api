@@ -4,8 +4,6 @@ import { CitaController } from './cita.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Cita } from './entities/cita.entity';
 import { User } from 'src/user/entities/user.entity';
-import { UserRepository } from 'src/user/user.repository';
-import { UserService } from 'src/user/user.service';
 import { Consultorio } from 'src/consultorios/entities/consultorio.entity';
 
 @Module({
