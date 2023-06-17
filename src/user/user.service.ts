@@ -3,13 +3,11 @@ import { CreateUserDto } from './dto/register-user.dto';
 import { UserRepository } from './user.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
-import { Equal, In, Not, Repository } from 'typeorm';
+import { Equal, In, Not } from 'typeorm';
 import { HistorialClinico } from '../historial-clinico/entities/historial-clinico.entity';
 import { HistorialClinicoService } from '../historial-clinico/historial-clinico.service';
-import { classToPlain } from 'class-transformer';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UpdateMedicoDto } from '../medicos/dto/update-medico.dto';
-
 
 @Injectable()
 export class UserService {

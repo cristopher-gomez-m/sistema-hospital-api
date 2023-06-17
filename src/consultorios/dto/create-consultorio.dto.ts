@@ -1,5 +1,4 @@
 import { IsNotEmpty } from "class-validator";
-import { User } from "../../user/entities/user.entity";
 import { ApiProperty } from "@nestjs/swagger";
 export class CreateConsultorioDto {
     @ApiProperty({ example: 'Especialidad del consultorio', description: 'Especialidad del consultorio', required: true })

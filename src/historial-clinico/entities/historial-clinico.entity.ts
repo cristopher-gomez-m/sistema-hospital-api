@@ -1,6 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { User } from "src/user/entities/user.entity";
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity,PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class HistorialClinico {

@@ -1,8 +1,5 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateConsultorioDto } from './create-consultorio.dto';
 import { IsNotEmpty } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-
 export class UpdateConsultorioDto  {
     @ApiProperty({ example: 'Especialidad del consultorio', description: 'Especialidad del consultorio', required: true })
     @IsNotEmpty({ message: 'La especialidad no debe estar vacía' })

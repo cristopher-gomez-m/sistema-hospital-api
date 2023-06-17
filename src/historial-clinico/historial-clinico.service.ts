@@ -1,6 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateHistorialClinicoDto } from './dto/create-historial-clinico.dto';
-import { UpdateHistorialClinicoDto } from './dto/update-historial-clinico.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { HistorialClinico } from './entities/historial-clinico.entity';
 import { HistorialClinicoRepository } from './historial-clinico.repository';

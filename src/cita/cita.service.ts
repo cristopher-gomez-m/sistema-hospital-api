@@ -5,7 +5,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Cita } from './entities/cita.entity';
 import { Repository } from 'typeorm';
 import { Consultorio } from 'src/consultorios/entities/consultorio.entity';
-import { UserRepository } from 'src/user/user.repository';
 import { User } from 'src/user/entities/user.entity';
 
 @Injectable()

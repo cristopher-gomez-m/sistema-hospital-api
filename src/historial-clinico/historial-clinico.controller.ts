@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body,Param, Delete, Put } from '@nestjs/common';
 import { HistorialClinicoService } from './historial-clinico.service';
 import { CreateHistorialClinicoDto } from './dto/create-historial-clinico.dto';
 import { UpdateHistorialClinicoDto } from './dto/update-historial-clinico.dto';
